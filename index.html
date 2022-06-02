@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor Mundo</title>
+    <script src=" https://unpkg.com/leaflet@1.6.0/dist/leaflet.js "></script>
+    <link rel="stylesheet" href=" https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+
+    <style>
+        #map {
+            width: 100%;
+            height: 580px;
+            box-shadow: 5px 5px 5px #888;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="map"> </div>
+    <script>
+        var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+                + 'contributors', maxZoom: 18
+        });
+
+        
+        var map = L.map("map", {
+            center: [1.6205955124552067, -75.60914497421605],
+            layers: [OSM],
+            zoom: 15,
+            scrollWheelZoom: true,
+        });
+        L.control.scale().addTo(map);
+
+        var icon_UDLA = L.icon({
+            iconUrl: ' https://cdn.icon-icons.com/icons2/1716/PNG/512/3069198-cap-education-hat-school_112714.png',
+            iconSize: [40, 40],
+            popupAnchor: [-1, -10]
+        });
+
+        var mk_UDLA = L.marker([1.6203268640999329, -75.60434533160257], {
+            icon: icon_UDLA,
+            draggable: false,
+            title: 'Click aquí'
+        }).addTo(map).bindPopup('Universidad de la Amazonia').openPopup();
+
+        var icon_Alcaldia = L.icon({
+            iconUrl: ' https://cdn.icon-icons.com/icons2/2357/PNG/512/apartment_building_buildings_city_icon_143303.png',
+            iconSize: [40, 40],
+            popupAnchor: [-1, -10]
+        });
+
+        var mk_Alcaldia = L.marker([1.6150915460294903, -75.6138548568094], {
+            icon: icon_Alcaldia,
+            draggable: false,
+            title: 'Click aquí'
+        }).addTo(map).bindPopup('Alcaldia de Florencia').openPopup();
+
+        var m500 = L.circle([1.6152843291753791, -75.61380635582132], 500, {
+            color: 'light blue',
+            fillColor: '#60B283',
+            fillOpacity: 0.5
+        }).addTo(map);
+        
+        var icon_Parque = L.icon({
+            iconUrl: ' https://cdn.icon-icons.com/icons2/2164/PNG/128/park_tree_winter_sno_nature_icon_133088.png',
+            iconSize: [40, 40],
+            popupAnchor: [-1, -10]
+        });
+
+        var mk_Parque = L.marker([1.6150287799460614, -75.6132920307534], {
+            icon: icon_Parque,
+            draggable: false,
+            title: 'Click aquí'
+        }).addTo(map).bindPopup('Parque Santander').openPopup();
+
+        var polygon = L.polygon([
+            [1.6145404842322766,-75.61344087123871],
+            [1.6147335266033207,-75.61282932758333],
+            [1.6153233781790262,-75.61301171779634],
+            [1.6151356981507732,-75.61362862586975]
+        ]).addTo(map).bindPopup ('Mercaolid');
+
+        var icon_Casa = L.icon({
+            iconUrl: ' https://cdn.icon-icons.com/icons2/1286/PNG/128/66_85286.png',
+            iconSize: [40, 40],
+            popupAnchor: [-1, -10]
+        });
+
+        var mk_Parque = L.marker([1.6254473493874555,-75.59573829174043], {
+            icon: icon_Casa,
+            draggable: false,
+            title: 'Click aquí'
+        }).addTo(map).bindPopup('Mi casa').openPopup();
+
+        var a1 = new L.LatLng(1.625454, -75.595643 ); 
+        var a2 = new L.LatLng(1.625662, -75.595743);
+
+        var a3 = new L.LatLng(1.625340104195197,-75.59616208076477);
+        var a4 = new L.LatLng(1.6250773534501053,-75.59680581092836);
+        var a5 = new L.LatLng(1.6248789498036138,-75.59734225273134);
+        var a6 = new L.LatLng(1.6247127197064033,-75.59762656688692);
+
+        var a7 = new L.LatLng(1.624589387689964,-75.59776067733766);
+        var a8 = new L.LatLng(1.624439244355435,-75.59786260128023);
+        var a9 = new L.LatLng(1.6233721539065078,-75.5983990430832);
+        var a10 = new L.LatLng(1.6231898368890383,-75.59862971305847);
+        var a11 = new L.LatLng(1.6217366624269045,-75.59937536716463);
+        var a12 = new L.LatLng(1.6211843486122282,-75.59977769851686);
+        var a13 = new L.LatLng(1.6207339178168614,-75.60027658939363);
+        var a14 = new L.LatLng(1.6200421846146111,-75.60083985328676);
+        var a15 = new L.LatLng(1.619629289489835,-75.60119390487672);
+
+        var a16 = new L.LatLng(1.6194147984827176,-75.60131192207338);
+        var a17 = new L.LatLng(1.619296828419133,-75.60148894786836);
+
+        var a18 = new L.LatLng(1.6197311727102701,-75.60246527194978);
+        var a19 = new L.LatLng(1.6199027654909852,-75.60269594192506);
+        
+        var latlngs = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19];
+        var polyline = L.polyline(
+            latlngs, {color: 'red'}
+        ).addTo(map).bindPopup ('Avda. Juan Carlos I');
+
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng) // Sets the geographical point where the popup will open.
+                .setContent("Has hecho click en la coordenada:<br> " +  e.latlng.lat.toString() + "," +  e.latlng.lng.toString()) // Sets the HTML content of the popup.
+                .openOn(map); // Adds the popup to the map and closes the previous one. 
+        }map.on('click', onMapClick);
+
+    </script>
+</body>
+
+</html>
